@@ -3,11 +3,6 @@
 open System
 open System.Collections.Generic
 
-let max (a : int64, b : int64) : int64 = 
-    if a > b then a
-    else b
-            
-
 let findAllFactors (a : int64) = 
     let mutable stop = false
     let mutable input = a
@@ -34,4 +29,17 @@ let findAllFactors (a : int64) =
                 else 
                     f <- f + 2L
     factors
+
+let primeSieve (a : int64) = 
+    let knownComposites = new HashSet<int64>()
+
+    for i in 3L .. 2L .. a do
+       for j in 2L * i .. i .. a do
+        if knownComposites.Contains(j) = false then ignore(knownComposites.Add(j))
+
+    let intermediate = seq { for i in 3L .. 2L .. a -> i } |> Seq.filter(fun f -> knownComposites.Contains(f) = false) 
+    [2L] |> Seq.append(intermediate)
+        
     
+
+            

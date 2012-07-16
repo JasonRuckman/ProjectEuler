@@ -32,6 +32,7 @@ let problemTwo unit : int =
     |> Seq.sum
 
 let problemThree unit : int64 = Helpers.findAllFactors(600851475143L) |> Seq.max
+
 let problemFour unit = 
     Seq.initInfinite(fun f -> 999 - f) 
     |> Seq.takeWhile(fun f -> f > 99) 
@@ -51,6 +52,8 @@ let problemEight (a : seq<int>) =
     a |> Seq.windowed(5) 
     |> Seq.map(fun f -> f |>  Seq.fold(fun acc item -> acc * item) 1) 
     |> Seq.max
+
+let problemNine unit = Helpers.primeSieve(2000000L) |> Seq.sum
 
 
 

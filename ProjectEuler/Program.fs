@@ -8,9 +8,9 @@ open System.Collections.Generic
 open Problems11Through20
 
 
-let result = Problems1Through10.problemThree()
+let result = Problems1Through10.problemNine()
 
-let i = 1
+let k = 1
 
 
 
