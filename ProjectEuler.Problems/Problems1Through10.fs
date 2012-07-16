@@ -31,7 +31,7 @@ let problemTwo unit : int =
     |> Seq.filter(fun f -> f % 2 = 0) 
     |> Seq.sum
 
-
+let problemThree unit : int64 = Helpers.findAllFactors(600851475143L) |> Seq.max
 let problemFour unit = 
     Seq.initInfinite(fun f -> 999 - f) 
     |> Seq.takeWhile(fun f -> f > 99) 

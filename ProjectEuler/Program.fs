@@ -8,8 +8,10 @@ open System.Collections.Generic
 open Problems11Through20
 
 
-let result = Problems11Through20.problemThirteen()
+let result = Problems1Through10.problemThree()
 
 let i = 1
+
+
 
 
