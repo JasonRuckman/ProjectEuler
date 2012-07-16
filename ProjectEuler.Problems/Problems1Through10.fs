@@ -52,10 +52,6 @@ let problemEight (a : seq<int>) =
     |> Seq.map(fun f -> f |>  Seq.fold(fun acc item -> acc * item) 1) 
     |> Seq.max
 
-//let generateTriples unit =
-//    //m n
-//    Seq.initInfinite(fun f -> (f + 1, Seq.initInfinite(fun v -> v + 2)))
-//    |> Seq.map(fun m -> m
 
 
 
