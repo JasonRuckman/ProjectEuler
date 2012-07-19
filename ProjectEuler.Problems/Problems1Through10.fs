@@ -55,6 +55,18 @@ let problemEight (a : seq<int>) =
 
 let problemNine unit = Helpers.primeSieve(2000000L) |> Seq.sum
 
+let problemTen unit = 
+    let mutable result = 0.
+
+    Seq.init 500 (fun f -> Convert.ToDouble(f)) 
+    |> Seq.map(fun f -> Seq.init 500 (fun v -> (f, Convert.ToDouble(v)))) |> Seq.concat
+    |> Seq.map(fun (k, v) -> 
+        let cSquared = k * k + v * v
+        let c = Math.Sqrt(cSquared)
+        (k, v, c))
+    |> Seq.filter(fun (k,v,c) -> k + v + c = 1000.0) 
+    |> Seq.map(fun (k,v,c) -> k * v * c) 
+    |> Seq.head
 
 
 

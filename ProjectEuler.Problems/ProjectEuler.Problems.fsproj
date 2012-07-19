@@ -38,8 +38,8 @@
     <Compile Include="Constants.fs" />
     <Compile Include="Helpers.fs" />
     <Compile Include="Problems1Through10.fs" />
-    <Compile Include="Problems40Through50.fs" />
     <Compile Include="Problems11Through20.fs" />
+    <Compile Include="Problems40Through50.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
