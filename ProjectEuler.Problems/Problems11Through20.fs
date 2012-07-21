@@ -76,6 +76,24 @@ let problemEleven (path : String) =
     |> Seq.max
 
     
+let triangleGenerator unit = 
+        Seq.unfold(fun f -> 
+        let mutable v = 0
+        for i in f .. -1 .. 0 do 
+            v <- v + i
+        Some(v, f + 1)) 1 
+
+let factors number = seq {
+    for divisor in 1 .. (float >> sqrt >> int) number do
+    if number % divisor = 0 then
+        yield divisor
+        yield number / divisor
+}
+
+let problemTwelve unit = 
+    triangleGenerator()
+    |> Seq.filter(fun f -> factors(f) |> Seq.distinct |> Seq.length > 500)
+    |> Seq.head
 
 let problemThirteen (path : String) = 
     let sum = File.ReadAllLines(path) |> Seq.map(fun f -> BigInteger.Parse(f)) |> Seq.sum 
