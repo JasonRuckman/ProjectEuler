@@ -129,3 +129,10 @@ let problemSixteen unit =
      BigInteger.Pow(BigInteger(2), 1000).ToString() 
         |> Seq.map(fun f -> BigInteger.Parse(f.ToString())) 
         |> Seq.sum
+
+let problemTwenty unit = 
+    let factorial = 
+        Seq.init 100 (fun f -> new BigInteger(100 - f)) 
+        |> Seq.reduce(fun acc item -> acc * item)
+
+    factorial.ToString() |> Seq.map(fun f -> BigInteger.Parse(f.ToString())) |> Seq.sum
