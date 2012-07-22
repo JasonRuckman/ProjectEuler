@@ -124,3 +124,8 @@ let problemFourteen (a : int64) =
             count
     
         seq { for i = 1L to a do yield i } |> Seq.map(fun f -> (f, generateChain(f))) |> Seq.maxBy(fun (k, v) -> v)
+
+let problemSixteen unit =
+     BigInteger.Pow(BigInteger(2), 1000).ToString() 
+        |> Seq.map(fun f -> BigInteger.Parse(f.ToString())) 
+        |> Seq.sum
