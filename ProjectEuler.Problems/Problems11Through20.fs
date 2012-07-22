@@ -130,6 +130,21 @@ let problemSixteen unit =
         |> Seq.map(fun f -> BigInteger.Parse(f.ToString())) 
         |> Seq.sum
 
+let problemNineteen unit = 
+    let mutable seed = new DateTime(1901, 1, 1)
+    let ed = new DateTime(2000, 12, 31)
+
+    let mutable numSundays = 0
+
+    while seed.DayOfWeek <> DayOfWeek.Sunday do
+        seed <- seed.AddDays(1.0)
+
+    while seed < ed do 
+        seed <- seed.AddDays(7.0)
+        if seed.DayOfWeek = DayOfWeek.Sunday & seed.Day = 1 then numSundays <- numSundays + 1
+
+    numSundays
+
 let problemTwenty unit = 
     let factorial = 
         Seq.init 100 (fun f -> new BigInteger(100 - f)) 
