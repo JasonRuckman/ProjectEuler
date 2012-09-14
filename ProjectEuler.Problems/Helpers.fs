@@ -2,7 +2,37 @@
 
 open System
 open System.Collections.Generic
+open System.Numerics
 
+let factorial (a : int64) = 
+    let mutable fact = BigInteger(1)
+
+    for i in a .. -1L .. 1L do
+        fact <- BigInteger.Multiply(fact, BigInteger(i)) 
+        
+    fact
+       
+       
+let rec distribute e = function
+  | [] -> [[e]]
+  | x::xs' as xs -> (e::xs)::[for xs in distribute e xs' -> x::xs]
+
+let rec permute = function
+  | [] -> [[]]
+  | e::xs -> List.collect (distribute e) (permute xs)
+
+let sqrt_int(x:int) = x |> float |> sqrt |> int
+let sqrt_int64(x:int64) = x |> float |> sqrt |> int64
+
+let factor (a : int) = 
+    let output = new List<int>()
+
+    for i = 1 to a / 2 do
+        if(a % i = 0) then
+            output.Add(i)
+    
+    output
+       
 let findAllFactors (a : int64) = 
     let mutable stop = false
     let mutable input = a

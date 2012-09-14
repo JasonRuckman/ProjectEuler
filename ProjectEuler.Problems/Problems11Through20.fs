@@ -125,6 +125,10 @@ let problemFourteen (a : int64) =
     
         seq { for i = 1L to a do yield i } |> Seq.map(fun f -> (f, generateChain(f))) |> Seq.maxBy(fun (k, v) -> v)
 
+let problemFifteen = 
+    let f = BigInteger.Divide(Helpers.factorial(20L + 20L) , (Helpers.factorial(20L) * Helpers.factorial(20L)))
+    f
+
 let problemSixteen unit =
      BigInteger.Pow(BigInteger(2), 1000).ToString() 
         |> Seq.map(fun f -> BigInteger.Parse(f.ToString())) 
@@ -141,7 +145,7 @@ let problemNineteen unit =
 
     while seed < ed do 
         seed <- seed.AddDays(7.0)
-        if seed.DayOfWeek = DayOfWeek.Sunday & seed.Day = 1 then numSundays <- numSundays + 1
+        if seed.DayOfWeek = DayOfWeek.Sunday && seed.Day = 1 then numSundays <- numSundays + 1
 
     numSundays
 

@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ProjectEuler", "ProjectEuler\ProjectEuler.fsproj", "{2653E26F-47FD-463C-99D8-4D9CE5D9F8F1}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ProjectEuler.Problems", "ProjectEuler.Problems\ProjectEuler.Problems.fsproj", "{67C926D4-51DD-4F77-885D-EE3E0142054A}"
