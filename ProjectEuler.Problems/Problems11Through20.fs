@@ -134,6 +134,12 @@ let problemSixteen unit =
         |> Seq.map(fun f -> BigInteger.Parse(f.ToString())) 
         |> Seq.sum
 
+let problemSeventeen int = 
+    seq { for i in 1 .. 1000 -> i } 
+    |> Seq.map(fun f -> LetterHelper.getLengthFromNumber(f))
+    |> Seq.sum
+
+
 let problemNineteen unit = 
     let mutable seed = new DateTime(1901, 1, 1)
     let ed = new DateTime(2000, 12, 31)

@@ -25,13 +25,11 @@ let sqrt_int(x:int) = x |> float |> sqrt |> int
 let sqrt_int64(x:int64) = x |> float |> sqrt |> int64
 
 let factor (a : int) = 
-    let output = new List<int>()
-
-    for i = 1 to a / 2 do
-        if(a % i = 0) then
-            output.Add(i)
-    
-    output
+     seq {
+            for i = 1 to a / 2 do
+                if(a % i = 0) then
+                   yield i
+         }
        
 let findAllFactors (a : int64) = 
     let mutable stop = false
@@ -69,6 +67,8 @@ let primeSieve (a : int64) =
 
     let intermediate = seq { for i in 3L .. 2L .. a -> i } |> Seq.filter(fun f -> knownComposites.Contains(f) = false) 
     [2L] |> Seq.append(intermediate)
+
+
         
     
 
