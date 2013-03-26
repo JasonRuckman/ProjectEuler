@@ -54,8 +54,7 @@ let problemTwentyTwo =
 
 
 let problemTwentyFour unit = 
-    let result = "0123456789" |> Seq.toList |> Helpers.permute |> Seq.sort |> Seq.nth(999999) |> Seq.fold(fun acc item -> String.Format("{0}{1}", acc, item)) String.Empty
-    let integerResult = Int32.Parse(result)
+    let result = ("0123456789" |> Seq.toList |> Helpers.permute |> Seq.sort |> Seq.nth(999999) |> Seq.fold(fun acc item -> String.Format("{0}{1}", acc, item)) String.Empty) |> Int32.Parse
     ()
 
 let problemTwentyFive unit = 
