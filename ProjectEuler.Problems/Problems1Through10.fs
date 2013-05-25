@@ -23,7 +23,7 @@ let findIfDivisibleByAll (a : int) : bool =
 let reverseNum (input : int) : int = Convert.ToInt32(new String(input.ToString().Reverse().ToArray()))
 let isPalindrome (input : int) : bool = reverseNum(input) = input
 
-let problemOne unit : int = Enumerable.Range(0, 1000) |> Seq.filter(fun f -> f % 3 = 0 || f % 5 = 0) |> Seq.sum     
+let problemOne unit : int = [0..1000] |> Seq.filter(fun f -> f % 3 = 0 || f % 5 = 0) |> Seq.sum     
   
 let problemTwo unit : int = 
     Seq.unfold(fun (current, next) -> Some(current, (next, current + next))) (0, 1) 
@@ -43,15 +43,14 @@ let problemFour unit =
 let problemFive unit : int = Seq.initInfinite(fun f -> f * 20) |> Seq.find(fun f -> findIfDivisibleByAll(f))
 
 let problemSix unit = 
-    Math.Pow(Enumerable.Range(1, 100) |> Seq.map(fun f -> Convert.ToDouble(f))
-        |> Seq.fold(fun acc elem -> acc + elem) 0.0, 2.0) - 
-    (Enumerable.Range(1, 100) |> Seq.map(fun f -> Convert.ToDouble(f)) 
+    Math.Pow([1..100] |> Seq.map(fun f -> Convert.ToDouble(f))
+        |> Seq.fold(fun acc elem -> acc + elem) 0.0, 2.0) - ([1..100] |> Seq.map(fun f -> Convert.ToDouble(f)) 
         |> Seq.fold(fun acc elem -> acc + (elem * elem)) 0.0)
 
 let problemEight (a : seq<int>) = 
     a |> Seq.windowed(5) 
-    |> Seq.map(fun f -> f |>  Seq.fold(fun acc item -> acc * item) 1) 
-    |> Seq.max
+      |> Seq.map(fun f -> f |>  Seq.fold(fun acc item -> acc * item) 1) 
+      |> Seq.max
 
 let problemNine unit = Helpers.primeSieve(2000000L) |> Seq.sum
 

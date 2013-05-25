@@ -8,27 +8,9 @@ open System.Collections.Generic
 open System.Numerics
 open Structures
 
-let generateAllLeftToRightDiagonalItems (lines : int64 array array) = 
-    //for each line, attempt to create a sequence that involves
-
-    let computeProduct (i : int, j : int) = 
-        seq { for offset = 0 to 3 do yield offset } 
-        |> Seq.map(fun f -> 
-            lines.[i + f].[j + f]) 
-        |> Seq.reduce(fun acc item -> acc * item)
-
-    seq { for i = 0 to 16 do for j = 0 to 16 do yield computeProduct(i, j) }
- 
-let generateAllRightToLeftDiagonalItems (lines : int64 array array) = 
-    //for each line, attempt to create a sequence that involves
-
-    let computeProduct (i : int, j : int) = 
-        seq { for offset = 0 to 3 do yield offset } 
-        |> Seq.map(fun f -> 
-            lines.[i - f].[j + f]) 
-        |> Seq.reduce(fun acc item -> acc * item)
-
-    seq { for i = 19 downto 3 do for j = 0 to 16 do yield computeProduct(i, j) }
+let computeProduct (i : int, j : int, lines : int64 array array) = seq { for offset = 0 to 3 do yield offset } |> Seq.map(fun f -> lines.[i - f].[j + f]) |> Seq.reduce(fun acc item -> acc * item)   
+let generateAllLeftToRightDiagonalItems (lines : int64 array array) = seq { for i = 0 to 16 do for j = 0 to 16 do yield computeProduct(i, j, lines) }
+let generateAllRightToLeftDiagonalItems (lines : int64 array array) = seq { for i = 19 downto 3 do for j = 0 to 16 do yield computeProduct(i, j, lines) }
 
 
 let problemEleven (path : String) = 
@@ -78,11 +60,13 @@ let problemEleven (path : String) =
 
     
 let triangleGenerator unit = 
-        Seq.unfold(fun f -> 
+    let gen f = 
         let mutable v = 0
         for i in f .. -1 .. 0 do 
             v <- v + i
-        Some(v, f + 1)) 1 
+        Some(v, f + 1)
+
+    Seq.unfold(fun f -> gen f) 1 
 
 let factors number = seq {
     for divisor in 1 .. (float >> sqrt >> int) number do
@@ -131,7 +115,7 @@ let problemFifteen =
     f
 
 let problemSixteen unit =
-     BigInteger.Pow(BigInteger(2), 1000).ToString() 
+     BigInteger.Pow(bigint 2, 1000).ToString() 
         |> Seq.map(fun f -> BigInteger.Parse(f.ToString())) 
         |> Seq.sum
 
