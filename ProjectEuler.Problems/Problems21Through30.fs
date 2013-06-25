@@ -9,14 +9,12 @@ open System.Numerics
 
 
 let problemTwentyOne() =
-    let set = new HashSet<int>()
     let candidateCache = new Dictionary<int, int>()
-
+    let sumFactors f = Helpers.factor(f) |> Seq.sum
     let candidates = [2 .. 10000] 
-                        |> Seq.choose(fun f -> let sum = Helpers.factor(f) |> Seq.sum
+                        |> Seq.choose(fun f -> let sum = sumFactors f
                                                ignore(candidateCache.Add(f, sum))
-                                               if sum <> 1 then Some(f, sum)
-                                               else None)  |> Seq.toArray
+                                               if sum <> 1 then Some(f, sum) else None)  |> Seq.toArray
 
     let amicables = new HashSet<int>()
 
@@ -113,5 +111,6 @@ let problemThirty() =
                     |> Seq.filter(fun i -> i = (i.ToString() |> Seq.map(fun f -> pow(f)) |> Seq.sum))
                     |> Seq.sum
     ()
+ 
         
 

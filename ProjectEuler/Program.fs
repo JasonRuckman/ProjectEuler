@@ -7,9 +7,5 @@ open System.Linq
 open System.Collections.Generic
 open Structures
 
-Problems21Through30.problemTwentyFive()
-Problems21Through30.problemTwentyFive()
-let i = 1
-()
-
+Problems31Through40.problemThirtyFive()
 
