@@ -50,10 +50,36 @@ let rotate a =
                         r.Value <- rotateOne r.Value radix 
                 }  
             
+let isPalindrome a = 
+    let mutable reversedNum = 0
+    let mutable num = a
 
-              
-            
-            
+    while num > 0 do
+        reversedNum <- (reversedNum * 10) + (num % 10)
+        num <- num / 10
+
+    reversedNum = a
+
+let toBitArray a = 
+    let buf = Array.create(32) false
+
+    for i = 0 to buf.Length - 1 do
+        buf.[buf.Length - 1 - i] <- a &&& (1 <<< i) <> 0
+    
+    buf
+
+let reverse (a : 'a array) = 
+    let mutable start = 0
+    let mutable e = a.Length - 1
+    let buf = Array.zeroCreate(a.Length)
+
+    while start < e do
+        buf.[start] <- a.[e]
+        buf.[e] <- a.[start]
+        start <- start + 1
+        e <- e - 1
+
+    buf
 
 let rec combinations acc size set = seq {
   match size, set with 
@@ -67,12 +93,7 @@ let rec combinations acc size set = seq {
 let sqrt_int(x:int) = x |> float |> sqrt |> int
 let sqrt_int64(x:int64) = x |> float |> sqrt |> int64
 
-let factor (a : int) = 
-     seq {
-            for i = 1 to a / 2 do
-                if(a % i = 0) then
-                   yield i
-         }
+let factor (a : int) = seq { for i = 1 to a / 2 do if(a % i = 0) then yield i }
        
 let findAllFactors (a : int64) = 
     let mutable stop = false

@@ -7,5 +7,5 @@ open System.Linq
 open System.Collections.Generic
 open Structures
 
-Problems31Through40.problemThirtyFive()
+Problems31Through40.problemThirtySix() |> ignore
 

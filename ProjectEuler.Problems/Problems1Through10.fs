@@ -20,9 +20,6 @@ let findIfDivisibleByAll (a : int) : bool =
     elif a % 11 <> 0 then false
     else true
 
-let reverseNum (input : int) : int = Convert.ToInt32(new String(input.ToString().Reverse().ToArray()))
-let isPalindrome (input : int) : bool = reverseNum(input) = input
-
 let problemOne unit : int = [0..1000] |> Seq.filter(fun f -> f % 3 = 0 || f % 5 = 0) |> Seq.sum     
   
 let problemTwo unit : int = 
@@ -38,7 +35,7 @@ let problemFour unit =
     |> Seq.takeWhile(fun f -> f > 99) 
     |> Seq.map(fun f -> 
         Seq.initInfinite(fun v -> 999 - v) 
-        |> Seq.takeWhile(fun v -> v > 99) |> Seq.filter(fun m -> isPalindrome(m * f)) |> Seq.map(fun m -> f * m)) |> Seq.concat |> Seq.max
+        |> Seq.takeWhile(fun v -> v > 99) |> Seq.filter(fun m -> Helpers.isPalindrome(m * f)) |> Seq.map(fun m -> f * m)) |> Seq.concat |> Seq.max
 
 let problemFive unit : int = Seq.initInfinite(fun f -> f * 20) |> Seq.find(fun f -> findIfDivisibleByAll(f))
 
