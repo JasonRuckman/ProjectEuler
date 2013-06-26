@@ -81,6 +81,18 @@ let reverse (a : 'a array) =
 
     buf
 
+let digits a = 
+    let mutable num = a
+    let mutable rem = 0
+    let mutable d = List.empty<int>
+
+    while num > 0 do
+        rem <- num % 10
+        num <- num / 10
+        d <- rem :: d
+
+    d
+
 let rec combinations acc size set = seq {
   match size, set with 
   | n, x::xs -> 

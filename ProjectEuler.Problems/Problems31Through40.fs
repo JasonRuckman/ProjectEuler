@@ -7,6 +7,18 @@ open System.Collections.Generic
 open System.Linq
 open System.Numerics
 
+let problemThirtyFour() = 
+     let map = new Dictionary<int, int>()
+     
+     for i in 0 .. 9 do
+        let mutable product = 1
+        for j in 1 .. i do
+            product <- product * j
+        map.Add(i, product)  
+     //for really large factorials, you probably want to cache the digit chain, but for the smaller ones it doesn't seem to be worth it
+     let sum = seq { for i in 10 .. 2540160 do if ((i |> Helpers.digits |> Seq.map(fun f -> map.[f])) |> Seq.sum) = i then yield i } |> Seq.sum
+     ()
+
 let problemThirtyFive() = 
     let primeCache = new HashSet<int>();
     let b = Helpers.primeSieveInt(1000000) |> Seq.toList
@@ -20,10 +32,8 @@ let problemThirtyFive() =
 
     for i in b do
         toAdd.Clear()
-        if (Helpers.rotate i) |> Seq.map(addToListAndReturn) |> Seq.forall(cache.Contains) then 
-            toAdd.Add(i)
-            toAdd |> Seq.iter(add)
-        
+        if (Helpers.rotate i) |> Seq.map(addToListAndReturn) |> Seq.forall(cache.Contains) then [i] |> Seq.append toAdd |> Seq.iter(add)
+
     ()
 
 let problemThirtySix() =  

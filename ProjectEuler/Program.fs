@@ -7,5 +7,6 @@ open System.Linq
 open System.Collections.Generic
 open Structures
 
-Problems31Through40.problemThirtySix() |> ignore
+//none of this code is particularly clean or maintainable, it's only to demonstrate the algorithms
+Problems31Through40.problemThirtyFour() |> ignore
 
