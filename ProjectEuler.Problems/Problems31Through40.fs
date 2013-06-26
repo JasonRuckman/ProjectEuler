@@ -7,6 +7,20 @@ open System.Collections.Generic
 open System.Linq
 open System.Numerics
 
+let problemThirtyTwo() = 
+    //brute force
+    let result = seq {   for i = 1L to 2000L do
+                            for j = 1L to 2000L do
+                                let product = i * j
+                                let left = Helpers.breakup i
+                                let middle = Helpers.breakup j
+                                let right = Helpers.breakup product
+                                let appended = left |> List.append(middle) |> List.append(right)
+                                if (appended.Length = 9 && (appended |> Seq.distinct |> Seq.filter(fun f -> f <> 0L) |> Seq.length = 9)) then 
+                                    yield product
+                                } |> Seq.distinct |> Seq.sum
+   
+    ()
 let problemThirtyFour() = 
      let map = new Dictionary<int, int>()
      

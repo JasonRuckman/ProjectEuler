@@ -93,6 +93,27 @@ let digits a =
 
     d
 
+let intLog10 (a : int) = int(Math.Log10(float(a)))
+
+let breakup a = 
+    let mutable l = List.empty
+    let mutable num = a
+    while num > 0L do 
+        let rem = num % 10L
+        num <- num / 10L
+        l <- rem :: l
+    l
+
+let foldLongList a = 
+    let mutable num = 0L
+    let mutable radix = 1L
+
+    for i in (a |> List.rev) do
+        num <- num + (i * radix)
+        radix <- radix * 10L
+        
+    num
+      
 let rec combinations acc size set = seq {
   match size, set with 
   | n, x::xs -> 
